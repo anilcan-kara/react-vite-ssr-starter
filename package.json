@@ -1,0 +1,41 @@
+{
+  "scripts": {
+    "dev": "bun install && dotenvx run -- nodemon --watch ./pages --watch ./renderer --watch ./server ./server",
+    "prod": "bun install --production --frozen-lockfile && bun run lint && bun run build && dotenvx run -- node ./server",
+    "build": "dotenvx run -- vite build",
+    "lint": "dotenvx run -- eslint . --max-warnings 0",
+    "update:all": "bun add @vitejs/plugin-react compression @dotenvx/dotenvx eslint eslint-plugin-react eslint-plugin-react-hooks eslint-plugin-react-refresh express prop-types react react-dom react-icons sirv vike vite && bun run update:dev",
+    "update:dev": "bun add -D nodemon"
+  },
+  "dependencies": {
+    "@dotenvx/dotenvx": "^0.35.1",
+    "@vitejs/plugin-react": "^4.2.1",
+    "clsx": "^2.1.0",
+    "compression": "^1.7.4",
+    "dateformat": "^5.0.3",
+    "eslint": "^9.1.0",
+    "eslint-plugin-react": "^7.34.1",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.6",
+    "express": "^4.19.2",
+    "prop-types": "^15.8.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-hot-toast": "^2.4.1",
+    "react-icons": "^5.1.0",
+    "sirv": "^2.0.4",
+    "sweetalert2": "^11.10.8",
+    "vike": "^0.4.171",
+    "vite": "^5.2.10",
+    "zustand": "^4.5.2"
+  },
+  "type": "module",
+  "devDependencies": {
+    "autoprefixer": "^10.4.19",
+    "nodemon": "^3.1.0",
+    "postcss": "^8.4.38",
+    "tailwind-merge": "^2.3.0",
+    "tailwindcss": "^3.4.3",
+    "tailwindcss-animate": "^1.0.7"
+  }
+}
