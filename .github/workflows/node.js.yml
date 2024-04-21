@@ -36,5 +36,5 @@ jobs:
       run: bun run lint
     - name: Bun build
       run: bun run build
-    - name: Bun start production
-      run: bun run start
+    # - name: Bun start production
+    #   run: bun run start
