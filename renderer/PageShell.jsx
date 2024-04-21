@@ -6,9 +6,7 @@ import { Link } from './Link'
 import logoUrl from './logo.svg'
 import { PageContextProvider } from './usePageContext'
 
-import './css/global.css'
-import './css/index.css'
-import './PageShell.css'
+import './global.css'
 
 export function PageShell({ pageContext, children }) {
   return (

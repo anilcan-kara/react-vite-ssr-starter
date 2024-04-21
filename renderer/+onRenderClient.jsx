@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom/client'
 import { PageShell } from './PageShell'
 import { getPageTitle } from './getPageTitle'
 
+let root;
+
 export function onRenderClient(pageContext) {
   const { Page } = pageContext
 
@@ -17,9 +19,10 @@ export function onRenderClient(pageContext) {
   const page = (<PageShell pageContext={pageContext}><Page /></PageShell>)
 
   if (pageContext.isHydration) {
-    ReactDOM.hydrateRoot(container, page)
+    root = ReactDOM.hydrateRoot(container, page)
   } else {
-    ReactDOM.createRoot(container).render(page)
+    if (!root) root = ReactDOM.createRoot(container)
+    root.render(page)
   }
 
   document.title = getPageTitle(pageContext)

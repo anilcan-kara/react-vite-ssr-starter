@@ -1,5 +1,3 @@
-import './code.css'
-
 export function Page() {
   return (
     <>
