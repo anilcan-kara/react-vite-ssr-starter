@@ -23,19 +23,19 @@ jobs:
     - uses: actions/checkout@v4
     - uses: oven-sh/setup-bun@v1
     - name: Bun version
-    - run: bun -v
+      run: bun -v
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - name: Node version, npm version
-    - run: node -v && npm -v
+      run: node -v && npm -v
     - name: Bun install
-    - run: bun install --production --frozen-lockfile
+      run: bun install --production --frozen-lockfile
     - name: Bun lint
-    - run: bun run lint
+      run: bun run lint
     - name: Bun build
-    - run: bun run build
+      run: bun run build
     - name: Bun prod
-    - run: bun dotenvx run -- node ./server
+      run: bun dotenvx run -- node ./server
