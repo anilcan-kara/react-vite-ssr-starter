@@ -32,7 +32,7 @@ jobs:
     - name: Node version, npm version
       run: node -v && npm -v
     - name: Bun install
-      run: bun install --production --frozen-lockfile
+      run: bun install --production
     - name: Bun lint
       run: bun run lint
     - name: Bun build
