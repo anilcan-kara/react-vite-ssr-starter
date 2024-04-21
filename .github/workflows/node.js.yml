@@ -31,7 +31,11 @@ jobs:
         cache: 'npm'
     - name: Node version, npm version
     - run: node -v && npm -v
+    - name: Bun install
     - run: bun install --production --frozen-lockfile
+    - name: Bun lint
     - run: bun run lint
+    - name: Bun build
     - run: bun run build
+    - name: Bun prod
     - run: bun dotenvx run -- node ./server
