@@ -1,12 +1,12 @@
 {
+  "type": "module",
   "scripts": {
-    "dev": "bun install && dotenvx run -- nodemon --watch ./pages --watch ./renderer --watch ./server ./server",
+    "dev": "bun install && dotenvx run -- node ./server",
     "start": "cross-env NODE_ENV=production node ./server",
     "prod": "bun install --production && bun run lint && bun run build && bun run start",
     "build": "dotenvx run -- vite build",
     "lint": "dotenvx run -- eslint . --max-warnings 0",
-    "update:all": "bun add @vitejs/plugin-react compression @dotenvx/dotenvx eslint eslint-plugin-react eslint-plugin-react-hooks eslint-plugin-react-refresh express prop-types react react-dom react-icons sirv vike vite && bun run update:dev",
-    "update:dev": "bun add -D nodemon"
+    "update:all": "bun add @vitejs/plugin-react compression @dotenvx/dotenvx eslint eslint-plugin-react eslint-plugin-react-hooks eslint-plugin-react-refresh express prop-types react react-dom react-icons sirv vike vite"
   },
   "dependencies": {
     "@dotenvx/dotenvx": "^0.35.1",
@@ -35,9 +35,5 @@
     "vike": "^0.4.171",
     "vite": "^5.2.10",
     "zustand": "^4.5.2"
-  },
-  "type": "module",
-  "devDependencies": {
-    "nodemon": "^3.1.0"
   }
 }
