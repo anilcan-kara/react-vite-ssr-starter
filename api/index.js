@@ -15,7 +15,7 @@ import compression from 'compression';
 import express from 'express';
 import { renderPage } from 'vike/server';
 
-import { root } from './root.js';
+import { root, upper } from './root.js';
 
 console.log(`root`, root);
 
@@ -36,7 +36,7 @@ if (isProduction) {
   // ⚠️ We instantiate it only in development. (It isn't needed in production and it
   // would unnecessarily bloat our production server.)
   const vite = await import('vite')
-  const viteDev = await vite.createServer({ root: '../dist', server: { middlewareMode: true } })
+  const viteDev = await vite.createServer({ root: '../', server: { middlewareMode: true } })
   const viteDevMiddleware = viteDev.middlewares
 
   app.use(viteDevMiddleware)
