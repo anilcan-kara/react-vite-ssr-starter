@@ -46,6 +46,16 @@ const list6 = fs.existsSync(`${parentDir}/dist`) && fs.readdirSync(`${parentDir}
 console.log(`list6.length`, list6.length);
 console.log(`list6`, list6);
 
+const list7 = fs.existsSync(`${parentDir}/dist/server`) && fs.readdirSync(`${parentDir}/dist/server`) || []
+
+console.log(`list7.length`, list7.length);
+console.log(`list7`, list7);
+
+const list8 = fs.existsSync(`${parentDir}/dist/client`) && fs.readdirSync(`${parentDir}/dist/client`) || []
+
+console.log(`list8.length`, list8.length);
+console.log(`list8`, list8);
+
 export const upper = parentDir
 
 export const root = currentDir
