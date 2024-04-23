@@ -17,6 +17,8 @@ import { renderPage } from 'vike/server'
 
 import { root } from './root.js'
 
+console.log(`root`, root);
+
 const isProduction = process.env.NODE_ENV === 'production'
 const app = express()
 
