@@ -11,11 +11,11 @@
 //  - HatTip (https://github.com/hattipjs/hattip)
 //    - You can use Bati (https://batijs.dev/) to scaffold a Vike + HatTip app. Note that Bati generates apps that use the V1 design (https://vike.dev/migration/v1-design) and Vike packages (https://vike.dev/vike-packages)
 
-import compression from 'compression'
-import express from 'express'
-import { renderPage } from 'vike/server'
+import compression from 'compression';
+import express from 'express';
+import { renderPage } from 'vike/server';
 
-import { root } from './root.js'
+import { root } from './root.js';
 
 console.log(`root`, root);
 
@@ -30,13 +30,14 @@ if (isProduction) {
   // (In dev, Vite's middleware serves our static assets.)
   const sirv = (await import('sirv')).default
 
-  app.use(sirv(`${root}/dist/client`))
+  app.use(sirv(`./dist/client`))
 } else {
   // We instantiate Vite's development server and integrate its middleware to our server.
   // ⚠️ We instantiate it only in development. (It isn't needed in production and it
   // would unnecessarily bloat our production server.)
   const vite = await import('vite')
-  const viteDevMiddleware = (await vite.createServer({ root, server: { middlewareMode: true } })).middlewares
+  const viteDev = await vite.createServer({ root: './dist', server: { middlewareMode: true } })
+  const viteDevMiddleware = viteDev.middlewares
 
   app.use(viteDevMiddleware)
 }
