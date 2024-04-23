@@ -1,14 +1,15 @@
 {
   "type": "module",
   "scripts": {
-    "dev": "bun install && bun run start",
-    "start": "dotenvx run -- node ./server",
-    "start:prod": "dotenvx run -- cross-env NODE_ENV=production node ./server",
-    "prod": "bun install --production && bun run lint:prod && bun run build:prod && bun run start:prod",
-    "build": "dotenvx run -- vite build",
-    "build:prod": "dotenvx run -- cross-env NODE_ENV=production vite build",
-    "lint": "dotenvx run -- eslint . --max-warnings 0",
-    "lint:prod": "dotenvx run -- cross-env NODE_ENV=production eslint . --max-warnings 0",
+    "dev": "bun install && bun run start:dev",
+    "start:dev": "dotenvx run -- node ./server",
+    "start": "dotenvx run -- cross-env NODE_ENV=production node ./server",
+    "prod:dev": "bun install --production && bun run lint:dev && bun run build:dev && bun run start:dev",
+    "prod": "bun install --production && bun run lint && bun run build && bun run start",
+    "build:dev": "dotenvx run -- vite build",
+    "build": "dotenvx run -- cross-env NODE_ENV=production vite build",
+    "lint:dev": "dotenvx run -- eslint . --max-warnings 0",
+    "lint": "dotenvx run -- cross-env NODE_ENV=production eslint . --max-warnings 0",
     "update:all": "bun add @vitejs/plugin-react compression @dotenvx/dotenvx eslint eslint-plugin-react eslint-plugin-react-hooks eslint-plugin-react-refresh express prop-types react react-dom react-icons sirv vike vite"
   },
   "dependencies": {
