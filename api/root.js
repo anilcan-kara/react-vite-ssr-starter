@@ -54,7 +54,7 @@ console.log(`list4`, list4);
 
 console.log(`parentDir`, parentDir);
 
-const list5 = fs.existsSync(parentDir) && scanDir(parentDir, ['node_modules', '.git']) || []
+const list5 = fs.existsSync(parentDir) && await scanDir(parentDir, ['node_modules', '.git']) || []
 
 console.log(`list5.length`, list5.length);
 console.log(`list5`, list5);
