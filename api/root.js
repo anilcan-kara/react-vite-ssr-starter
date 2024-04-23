@@ -13,6 +13,23 @@ const list = fs.readdirSync('.')
 console.log(`list.length`, list.length);
 console.log(`list`, list);
 
-export const root = dirname(fileURLToPath(import.meta.url)).split('/').slice(0, -1).join('/')
+const list2 = fs.readdirSync('api')
+
+console.log(`list2.length`, list2.length);
+console.log(`list2`, list2);
+
+const root = dirname(fileURLToPath(import.meta.url)).split('/').slice(0, -1).join('/')
 
 console.log(`root`, root);
+
+const list3 = fs.readdirSync(root)
+
+console.log(`list3.length`, list3.length);
+console.log(`list3`, list3);
+
+const list4 = fs.readdirSync(`${root}/dist`)
+
+console.log(`list4.length`, list4.length);
+console.log(`list4`, list4);
+
+export default { root }
