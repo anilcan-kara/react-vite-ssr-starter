@@ -136,8 +136,15 @@ const pageFiles = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePro
     "file": "assets/static/onRenderClient.B_x-51_i.css",
     "src": "_chunk-!~{007}~.js"
   },
-  "_chunk-C3bx-nK1.js": {
-    "file": "assets/chunks/chunk-C3bx-nK1.js",
+  "_chunk-CG3bvvlK.js": {
+    "file": "assets/chunks/chunk-CG3bvvlK.js",
+    "name": "useData",
+    "imports": [
+      "_chunk-RND0dqnk.js"
+    ]
+  },
+  "_chunk-RND0dqnk.js": {
+    "file": "assets/chunks/chunk-RND0dqnk.js",
     "name": "_onRenderClient",
     "css": [
       "assets/static/onRenderClient.B_x-51_i.css"
@@ -146,15 +153,8 @@ const pageFiles = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePro
       "assets/static/logo.2_7Lo9tV.svg"
     ]
   },
-  "_chunk-DwVJtgRy.js": {
-    "file": "assets/chunks/chunk-DwVJtgRy.js",
-    "name": "useData",
-    "imports": [
-      "_chunk-C3bx-nK1.js"
-    ]
-  },
   "node_modules/vike/dist/esm/client/client-routing-runtime/entry.js": {
-    "file": "assets/entries/entry-client-routing.Cmz8lBRg.js",
+    "file": "assets/entries/entry-client-routing.CMPjCypy.js",
     "name": "entries/entry-client-routing",
     "src": "node_modules/vike/dist/esm/client/client-routing-runtime/entry.js",
     "isEntry": true,
@@ -171,56 +171,56 @@ const pageFiles = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePro
     "src": "renderer/logo.svg"
   },
   "virtual:vike:pageConfigValuesAll:client:/pages/_error": {
-    "file": "assets/entries/pages_error.CZXXZS12.js",
+    "file": "assets/entries/pages_error.DH6K4cAj.js",
     "name": "entries/pages/_error",
     "src": "virtual:vike:pageConfigValuesAll:client:/pages/_error",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_chunk-C3bx-nK1.js"
+      "_chunk-RND0dqnk.js"
     ]
   },
   "virtual:vike:pageConfigValuesAll:client:/pages/about": {
-    "file": "assets/entries/pages_about.C__e4oC3.js",
+    "file": "assets/entries/pages_about.CRvKZbll.js",
     "name": "entries/pages/about",
     "src": "virtual:vike:pageConfigValuesAll:client:/pages/about",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_chunk-C3bx-nK1.js"
+      "_chunk-RND0dqnk.js"
     ]
   },
   "virtual:vike:pageConfigValuesAll:client:/pages/index": {
-    "file": "assets/entries/pages_index.B5Dfgm_-.js",
+    "file": "assets/entries/pages_index.D6nWv8V1.js",
     "name": "entries/pages/index",
     "src": "virtual:vike:pageConfigValuesAll:client:/pages/index",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_chunk-C3bx-nK1.js",
-      "_chunk-DwVJtgRy.js"
+      "_chunk-RND0dqnk.js",
+      "_chunk-CG3bvvlK.js"
     ]
   },
   "virtual:vike:pageConfigValuesAll:client:/pages/star-wars/@id": {
-    "file": "assets/entries/pages_star-wars_-id.DwfPRQBJ.js",
+    "file": "assets/entries/pages_star-wars_-id.BER5x7WA.js",
     "name": "entries/pages/star-wars/@id",
     "src": "virtual:vike:pageConfigValuesAll:client:/pages/star-wars/@id",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_chunk-C3bx-nK1.js",
-      "_chunk-DwVJtgRy.js"
+      "_chunk-RND0dqnk.js",
+      "_chunk-CG3bvvlK.js"
     ]
   },
   "virtual:vike:pageConfigValuesAll:client:/pages/star-wars/index": {
-    "file": "assets/entries/pages_star-wars_index.BPlApbWs.js",
+    "file": "assets/entries/pages_star-wars_index.Cx8gVqXe.js",
     "name": "entries/pages/star-wars/index",
     "src": "virtual:vike:pageConfigValuesAll:client:/pages/star-wars/index",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_chunk-C3bx-nK1.js",
-      "_chunk-DwVJtgRy.js"
+      "_chunk-RND0dqnk.js",
+      "_chunk-CG3bvvlK.js"
     ]
   }
 };

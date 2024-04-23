@@ -1,5 +1,5 @@
-import { u as usePageContext, i as import_0 } from "../chunks/chunk-BlcxacZh.js";
-import { jsxDEV } from "react/jsx-dev-runtime";
+import { u as usePageContext, i as import_0 } from "../chunks/chunk-DQ-zEVRJ.js";
+import { jsx } from "react/jsx-runtime";
 import "react-dom/server";
 import "vike/server";
 import "react";
@@ -7,11 +7,7 @@ import "react-icons/hi";
 import "react-icons/md";
 import "prop-types";
 function Center({ children }) {
-  return /* @__PURE__ */ jsxDEV("div", { style: { height: "calc(100vh - 100px)", display: "flex", justifyContent: "center", alignItems: "center" }, children }, void 0, false, {
-    fileName: "/Users/alankara/ws/vike-app/pages/_error/+Page.jsx",
-    lineNumber: 5,
-    columnNumber: 5
-  }, this);
+  return /* @__PURE__ */ jsx("div", { style: { height: "calc(100vh - 100px)", display: "flex", justifyContent: "center", alignItems: "center" }, children });
 }
 function Page() {
   const pageContext = usePageContext();
@@ -19,15 +15,7 @@ function Page() {
   if (!abortReason) {
     abortReason = pageContext.is404 ? "Page not found." : "Something went wrong.";
   }
-  return /* @__PURE__ */ jsxDEV(Center, { children: /* @__PURE__ */ jsxDEV("p", { style: { fontSize: "1.3em" }, children: abortReason }, void 0, false, {
-    fileName: "/Users/alankara/ws/vike-app/pages/_error/+Page.jsx",
-    lineNumber: 21,
-    columnNumber: 7
-  }, this) }, void 0, false, {
-    fileName: "/Users/alankara/ws/vike-app/pages/_error/+Page.jsx",
-    lineNumber: 20,
-    columnNumber: 5
-  }, this);
+  return /* @__PURE__ */ jsx(Center, { children: /* @__PURE__ */ jsx("p", { style: { fontSize: "1.3em" }, children: abortReason }) });
 }
 const import_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,

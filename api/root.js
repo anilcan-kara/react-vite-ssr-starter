@@ -47,7 +47,7 @@ const list3 = fs.existsSync(currentDir) && fs.readdirSync(currentDir) || []
 console.log(`list3.length`, list3.length);
 console.log(`list3`, list3);
 
-const list4 = fs.existsSync(`${currentDir}/dist`) && fs.readdirSync(`${currentDir}/dist`) || []
+const list4 = fs.existsSync(`${currentDir}/build`) && fs.readdirSync(`${currentDir}/build`) || []
 
 console.log(`list4.length`, list4.length);
 console.log(`list4`, list4);
@@ -59,17 +59,17 @@ const list5 = fs.existsSync(parentDir) && await scanDir(parentDir, ['node_module
 console.log(`list5.length`, list5.length);
 console.log(`list5`, list5);
 
-const list6 = fs.existsSync(`${parentDir}/dist`) && fs.readdirSync(`${parentDir}/dist`) || []
+const list6 = fs.existsSync(`${parentDir}/build`) && fs.readdirSync(`${parentDir}/build`) || []
 
 console.log(`list6.length`, list6.length);
 console.log(`list6`, list6);
 
-const list7 = fs.existsSync(`${parentDir}/dist/server`) && fs.readdirSync(`${parentDir}/dist/server`) || []
+const list7 = fs.existsSync(`${parentDir}/build/server`) && fs.readdirSync(`${parentDir}/build/server`) || []
 
 console.log(`list7.length`, list7.length);
 console.log(`list7`, list7);
 
-const list8 = fs.existsSync(`${parentDir}/dist/client`) && fs.readdirSync(`${parentDir}/dist/client`) || []
+const list8 = fs.existsSync(`${parentDir}/build/client`) && fs.readdirSync(`${parentDir}/build/client`) || []
 
 console.log(`list8.length`, list8.length);
 console.log(`list8`, list8);

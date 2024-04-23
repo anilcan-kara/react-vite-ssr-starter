@@ -7,7 +7,7 @@
     "prod:dev": "bun install --production && bun run lint:dev && bun run build:dev && bun run start:dev",
     "prod": "bun install --production && bun run lint && bun run build && bun run start",
     "build:dev": "dotenvx run -- vite build",
-    "build": "dotenvx run -- cross-env NODE_ENV=production vite build",
+    "build": "dotenvx run -- cross-env NODE_ENV=production vite build --outDir build",
     "lint:dev": "dotenvx run -- eslint . --max-warnings 0",
     "lint": "dotenvx run -- cross-env NODE_ENV=production eslint . --max-warnings 0",
     "update:all": "bun add @vitejs/plugin-react compression @dotenvx/dotenvx eslint eslint-plugin-react eslint-plugin-react-hooks eslint-plugin-react-refresh express prop-types react react-dom react-icons sirv vike vite"

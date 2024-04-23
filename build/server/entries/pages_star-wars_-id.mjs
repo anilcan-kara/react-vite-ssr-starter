@@ -1,6 +1,6 @@
-import { i as import_0 } from "../chunks/chunk-BlcxacZh.js";
-import { jsxDEV, Fragment } from "react/jsx-dev-runtime";
-import { u as useData } from "../chunks/chunk-DW574uU7.js";
+import { i as import_0 } from "../chunks/chunk-DQ-zEVRJ.js";
+import { jsxs, Fragment, jsx } from "react/jsx-runtime";
+import { u as useData } from "../chunks/chunk-BswSSwqR.js";
 import { s as sleep } from "../chunks/chunk-CEspyVf0.js";
 import "react-dom/server";
 import "vike/server";
@@ -10,33 +10,17 @@ import "react-icons/md";
 import "prop-types";
 function Page() {
   const { movie } = useData();
-  return /* @__PURE__ */ jsxDEV(Fragment, { children: [
-    /* @__PURE__ */ jsxDEV("h1", { children: movie.title }, void 0, false, {
-      fileName: "/Users/alankara/ws/vike-app/pages/star-wars/@id/+Page.jsx",
-      lineNumber: 7,
-      columnNumber: 7
-    }, this),
+  return /* @__PURE__ */ jsxs(Fragment, { children: [
+    /* @__PURE__ */ jsx("h1", { children: movie.title }),
     "Release Date: ",
     movie.release_date,
-    /* @__PURE__ */ jsxDEV("br", {}, void 0, false, {
-      fileName: "/Users/alankara/ws/vike-app/pages/star-wars/@id/+Page.jsx",
-      lineNumber: 9,
-      columnNumber: 7
-    }, this),
+    /* @__PURE__ */ jsx("br", {}),
     "Director: ",
     movie.director,
-    /* @__PURE__ */ jsxDEV("br", {}, void 0, false, {
-      fileName: "/Users/alankara/ws/vike-app/pages/star-wars/@id/+Page.jsx",
-      lineNumber: 11,
-      columnNumber: 7
-    }, this),
+    /* @__PURE__ */ jsx("br", {}),
     "Producer: ",
     movie.producer
-  ] }, void 0, true, {
-    fileName: "/Users/alankara/ws/vike-app/pages/star-wars/@id/+Page.jsx",
-    lineNumber: 6,
-    columnNumber: 5
-  }, this);
+  ] });
 }
 const import_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
