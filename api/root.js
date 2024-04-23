@@ -1,6 +1,6 @@
-import fs from 'fs'
-import { dirname } from 'path'
-import { fileURLToPath } from 'url'
+import fs from 'fs';
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
 
 console.log(`import.meta.url`, import.meta.url);
 
@@ -12,21 +12,13 @@ export const root = dirname(fileURLToPath(import.meta.url)).split('/').slice(0, 
 
 console.log(`root`, root);
 
-scandir(root, (err, files) => {
-  if (err) throw err
-  console.log(files)
-})
+fs.readdir('.', function (err, list) {
+  if (err) {
+    console.log(`[ERROR_OCCURED][fs.readdir]`, err);
+    return;
+  }
 
-function scandir(dir, callback) {
-  var results = []
-  fs.readdir(dir, function (err, list) {
-    if (err) return callback(err)
-    var pending = list.length
-    if (!pending) return callback(null, results)
-    list.forEach(function (file) {
-      file = dir + '/' + file
-      results.push(file)
-      if (!--pending) callback(null, results)
-    })
-  })
-}
+  console.log(`list.length`, list.length);
+
+  console.log(`list`, list);
+})
