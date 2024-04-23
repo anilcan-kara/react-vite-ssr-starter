@@ -2,8 +2,8 @@
   "type": "module",
   "scripts": {
     "dev": "bun install && bun run start:dev",
-    "start:dev": "dotenvx run -- node ./server",
-    "start": "dotenvx run -- cross-env NODE_ENV=production node ./server",
+    "start:dev": "dotenvx run -- node ./api",
+    "start": "dotenvx run -- cross-env NODE_ENV=production node ./api",
     "prod:dev": "bun install --production && bun run lint:dev && bun run build:dev && bun run start:dev",
     "prod": "bun install --production && bun run lint && bun run build && bun run start",
     "build:dev": "dotenvx run -- vite build",
