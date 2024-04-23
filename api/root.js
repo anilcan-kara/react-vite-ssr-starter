@@ -8,6 +8,21 @@ console.log(`fileURLToPath(import.meta.url)`, fileURLToPath(import.meta.url));
 
 console.log(`dirname(fileURLToPath(import.meta.url))`, dirname(fileURLToPath(import.meta.url)));
 
+const currentDir = dirname(fileURLToPath(import.meta.url))
+const parentDir = currentDir.split('/').slice(0, -1).join('/')
+
+const recursiveScan = (dir, exclude = []) => {
+  const files = fs.readdirSync(dir)
+  const subdirs = files.filter((file) => fs.statSync(`${dir}/${file}`).isDirectory())
+  return subdirs.reduce((acc, subdir) => {
+    const subdirPath = `${dir}/${subdir}`
+    if (exclude.includes(subdirPath)) {
+      return acc
+    }
+    return [...acc, ...recursiveScan(subdirPath, exclude)]
+  }, files.filter((file) => !exclude.includes(`${dir}/${file}`)))
+}
+
 const list = fs.existsSync('.') && fs.readdirSync('.') || []
 
 console.log(`list.length`, list.length);
@@ -17,8 +32,6 @@ const list2 = fs.existsSync('api') && fs.readdirSync('api') || []
 
 console.log(`list2.length`, list2.length);
 console.log(`list2`, list2);
-
-const currentDir = dirname(fileURLToPath(import.meta.url))
 
 console.log(`currentDir`, currentDir);
 
@@ -32,11 +45,9 @@ const list4 = fs.existsSync(`${currentDir}/dist`) && fs.readdirSync(`${currentDi
 console.log(`list4.length`, list4.length);
 console.log(`list4`, list4);
 
-const parentDir = currentDir.split('/').slice(0, -1).join('/')
-
 console.log(`parentDir`, parentDir);
 
-const list5 = fs.existsSync(parentDir) && fs.readdirSync(parentDir) || []
+const list5 = fs.existsSync(parentDir) && recursiveScan(parentDir, ['node_modules']) || []
 
 console.log(`list5.length`, list5.length);
 console.log(`list5`, list5);
