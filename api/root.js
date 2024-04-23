@@ -1,5 +1,5 @@
 import fs from 'fs';
-import { dirname } from 'path';
+import path, { dirname } from 'path';
 import { fileURLToPath } from 'url';
 
 console.log(`import.meta.url`, import.meta.url);
@@ -11,16 +11,23 @@ console.log(`dirname(fileURLToPath(import.meta.url))`, dirname(fileURLToPath(imp
 const currentDir = dirname(fileURLToPath(import.meta.url))
 const parentDir = currentDir.split('/').slice(0, -1).join('/')
 
-const recursiveScan = (dir, exclude = []) => {
-  const files = fs.readdirSync(dir)
-  const subdirs = files.filter((file) => fs.statSync(`${dir}/${file}`).isDirectory())
-  return subdirs.reduce((acc, subdir) => {
-    const subdirPath = `${dir}/${subdir}`
-    if (exclude.includes(subdirPath)) {
-      return acc
+async function scanDir(dir, excludeFiles = []) {
+  const files = await fs.promises.readdir(dir);
+
+  let result = [];
+
+  for (const file of files) {
+    const filePath = path.join(dir, file);
+    const stats = await fs.promises.lstat(filePath);
+
+    if (stats.isDirectory() && !excludeFiles.includes(file)) {
+      result = result.concat(await scanDir(filePath, excludeFiles));
+    } else if (stats.isFile() && !excludeFiles.includes(file)) {
+      result.push(filePath);
     }
-    return [...acc, ...recursiveScan(subdirPath, exclude)]
-  }, files.filter((file) => !exclude.includes(`${dir}/${file}`)))
+  }
+
+  return result;
 }
 
 const list = fs.existsSync('.') && fs.readdirSync('.') || []
@@ -47,7 +54,7 @@ console.log(`list4`, list4);
 
 console.log(`parentDir`, parentDir);
 
-const list5 = fs.existsSync(parentDir) && recursiveScan(parentDir, ['node_modules']) || []
+const list5 = fs.existsSync(parentDir) && scanDir(parentDir, ['node_modules', '.git']) || []
 
 console.log(`list5.length`, list5.length);
 console.log(`list5`, list5);
