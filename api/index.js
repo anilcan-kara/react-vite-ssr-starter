@@ -15,14 +15,16 @@ import compression from 'compression';
 import express from 'express';
 import { renderPage } from 'vike/server';
 
-export const store = { count: 0 }
+export const store = { setup: false, count: 0 }
 
-const isProduction = process.env.NODE_ENV === 'production'
-const app = express()
+const setup = async () => {
+	store.setup = true;
 
-app.use(compression())
+	const isProduction = process.env.NODE_ENV === 'production'
+	const app = express()
 
-const main = async () => {
+	app.use(compression())
+
 	// Vite integration
 	if (isProduction) {
 		// In production, we need to serve our static assets ourselves.
@@ -77,4 +79,8 @@ const main = async () => {
 	console.log(`Server running at http://localhost:${port}`)
 }
 
-main()
+if (store.setup) {
+	console.log('Already settled up.');
+} else {
+	setup();
+}
