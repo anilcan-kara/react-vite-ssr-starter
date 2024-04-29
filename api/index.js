@@ -15,62 +15,66 @@ import compression from 'compression';
 import express from 'express';
 import { renderPage } from 'vike/server';
 
+export const store = { count: 0 }
+
 const isProduction = process.env.NODE_ENV === 'production'
 const app = express()
 
 app.use(compression())
 
-// Vite integration
-if (isProduction) {
-  // In production, we need to serve our static assets ourselves.
-  // (In dev, Vite's middleware serves our static assets.)
-  const sirv = (await import('sirv')).default
+const main = async () => {
+	// Vite integration
+	if (isProduction) {
+		// In production, we need to serve our static assets ourselves.
+		// (In dev, Vite's middleware serves our static assets.)
+		const sirv = (await import('sirv')).default
 
-  app.use(sirv(`./api/build/client`))
-} else {
-  // We instantiate Vite's development server and integrate its middleware to our server.
-  // ⚠️ We instantiate it only in development. (It isn't needed in production and it
-  // would unnecessarily bloat our production server.)
-  const vite = await import('vite')
-  const viteDev = await vite.createServer({ root: './', server: { middlewareMode: true } })
-  const viteDevMiddleware = viteDev.middlewares
+		app.use(sirv(`./api/build/client`))
+	} else {
+		// We instantiate Vite's development server and integrate its middleware to our server.
+		// ⚠️ We instantiate it only in development. (It isn't needed in production and it
+		// would unnecessarily bloat our production server.)
+		const vite = await import('vite')
+		const viteDev = await vite.createServer({ root: './', server: { middlewareMode: true } })
+		const viteDevMiddleware = viteDev.middlewares
 
-  app.use(viteDevMiddleware)
+		app.use(viteDevMiddleware)
+	}
+
+	// ...
+	// Other middlewares (e.g. some RPC middleware such as Telefunc)
+	// ...
+
+	// Vike middleware. It should always be our last middleware (because it's a
+	// catch-all middleware superseding any middleware placed after it).
+	app.get('*', async (req, res, next) => {
+		const pageContext = await renderPage({ urlOriginal: req.originalUrl })
+
+		if (pageContext.errorWhileRendering) {
+			// Install error tracking here, see https://vike.dev/errors
+		}
+
+		const { httpResponse } = pageContext
+
+		if (!httpResponse) {
+			return next()
+		} else {
+			const { body, statusCode, headers, earlyHints } = httpResponse
+			if (res.writeEarlyHints) res.writeEarlyHints({ link: earlyHints.map((e) => e.earlyHintLink) })
+			console.log(`headers`, headers);
+			headers.forEach(([name, value]) => res.setHeader(name, value))
+			console.log(`res.getHeaders() 1`, res.getHeaders());
+			// res.setHeader('x-powered-by', store.count++)
+			console.log(`res.getHeaders() 2`, res.getHeaders());
+			res.status(statusCode)
+			// For HTTP streams use httpResponse.pipe() instead, see https://vike.dev/streaming
+			res.send(body)
+		}
+	})
+
+	const port = process.env.PORT || 3000
+	app.listen(port)
+	console.log(`Server running at http://localhost:${port}`)
 }
 
-let count = 0
-
-// ...
-// Other middlewares (e.g. some RPC middleware such as Telefunc)
-// ...
-
-// Vike middleware. It should always be our last middleware (because it's a
-// catch-all middleware superseding any middleware placed after it).
-app.get('*', async (req, res, next) => {
-  const pageContext = await renderPage({ urlOriginal: req.originalUrl })
-
-  if (pageContext.errorWhileRendering) {
-    // Install error tracking here, see https://vike.dev/errors
-  }
-
-  const { httpResponse } = pageContext
-
-  if (!httpResponse) {
-    return next()
-  } else {
-    const { body, statusCode, headers, earlyHints } = httpResponse
-    if (res.writeEarlyHints) res.writeEarlyHints({ link: earlyHints.map((e) => e.earlyHintLink) })
-    console.log(`headers`, headers);
-    headers.forEach(([name, value]) => res.setHeader(name, value))
-    console.log(`res.getHeaders() 1`, res.getHeaders());
-    res.setHeader('x-powered-by', count++)
-    console.log(`res.getHeaders() 2`, res.getHeaders());
-    res.status(statusCode)
-    // For HTTP streams use httpResponse.pipe() instead, see https://vike.dev/streaming
-    res.send(body)
-  }
-})
-
-const port = process.env.PORT || 3000
-app.listen(port)
-console.log(`Server running at http://localhost:${port}`)
+main()
